@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Listing extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  public function scopeFilter($query, $filters)
+  {
+    if ($filters['tag'] ?? false) {
+      $query->where('tags', 'like', '%' . $filters['tag'] . '%')->get();
+    }
+  }
 }
