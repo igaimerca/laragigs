@@ -44,7 +44,7 @@ class User extends Authenticatable
   ];
 
   // Relationship With Listings
-  public function user()
+  public function listings()
   {
     return $this->hasMany(Listing::class, 'user_id');
   }
